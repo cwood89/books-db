@@ -7,33 +7,33 @@ Using mySQL to create a books database.
 3. Two tables should have at least five columns (including the primary key column)
 
 ``` sql
-CREATE TABLE authors (
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  CREATE TABLE authors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(100) NOT NULL,
     birthday DATE NOT NULL,
     death DATE,
     numberOfAwards INT NOT NULL
-)
+  )
 ```
 
 ``` sql
-CREATE TABLE genres (
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  CREATE TABLE genres (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     type VARCHAR(50) NOT NULL,
     fiction BOOLEAN,
-)
+  )
 ```
 
 ``` sql
-CREATE TABLE books(
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  CREATE TABLE books(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(100) NOT NULL,
     authorId INT NOT NULL,
     dateWritten DATE,
     genreId INT NOT NULL,
     FOREIGN KEY (genreId) REFERENCES genres(id),
     FOREIGN KEY (authorId) REFERENCES authors(id)
-)
+  )
 ```
 
 Show off using the following commands by using the File->Save SQL function
@@ -41,7 +41,17 @@ Show off using the following commands by using the File->Save SQL function
 1. Write an INSERT INTO command that adds multiple records at the same time
 
     ```sql
-
+      INSERT INTO genres(type,fiction)
+        VALUES ("Drama", true),
+        ("Horror", true),
+        ("Romance", true),
+        ("Young Adult", true),
+        ("Science Fiction", true),
+        ("Self Help", false),
+        ("Science", false),
+        ("Cooking", false),
+        ("Art", false),
+        ("History", false);
     ```
 
 2. Write a JOIN that displays a view with at least 5 columns from two different tables
