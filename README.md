@@ -20,7 +20,7 @@ Using mySQL to create a books database.
   CREATE TABLE genres (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     type VARCHAR(50) NOT NULL,
-    fiction BOOLEAN,
+    fiction VARCHAR(05) NOT NULL
   )
 ```
 
@@ -42,28 +42,48 @@ Show off using the following commands by using the File->Save SQL function
 
     ```sql
       INSERT INTO genres(type,fiction)
-        VALUES ("Drama", true),
-        ("Horror", true),
-        ("Romance", true),
-        ("Young Adult", true),
-        ("Science Fiction", true),
-        ("Self Help", false),
-        ("Science", false),
-        ("Cooking", false),
-        ("Art", false),
-        ("History", false);
+        VALUES ("Drama", "true"),
+        ("Horror", "true"),
+        ("Romance", "true"),
+        ("Young Adult", "true"),
+        ("Science Fiction", "true"),
+        ("Self Help", "false"),
+        ("Science", "false"),
+        ("Cooking", "false"),
+        ("Art", "false"),
+        ("History", "false");
     ```
 
 2. Write a JOIN that displays a view with at least 5 columns from two different tables
 
     ```sql
-
+        Select
+          books.name,
+          authors.name AS Author,
+          books.dateWritten AS Published,
+          authors.birthday AS AuthorsAge,
+          authors.numberOfAwards AS TotalAwards
+        FROM books
+        JOIN authors
+        ON books.authorId = authors.id;
     ```
 
 3. Write a JOIN that displays a view with at least 7 columns from three (or more) different tables
 
     ```sql
-
+        Select
+          books.name,
+          authors.name AS Author,
+          books.dateWritten AS Published,
+          authors.birthday AS AuthorsAge,
+          authors.numberOfAwards AS TotalAwards,
+          genres.type AS Genre,
+          genres.fiction
+        FROM books
+        JOIN authors
+        ON books.authorId = authors.id
+        Join genres
+        ON books.genreId = genres.id
     ```
 
 4. Write an ALTER TABLE command to add a new column to your table

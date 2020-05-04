@@ -1,11 +1,9 @@
-INSERT INTO genres(type,fiction)
-VALUES ("Drama", true),
-("Horror", true),
-("Romance", true),
-("Young Adult", true),
-("Science Fiction", true),
-("Self Help", false),
-("Science", false),
-("Cooking", false),
-("Art", false),
-("History", false);
+Select
+  books.name,
+  authors.name AS Author,
+  books.dateWritten AS Published,
+  authors.birthday AS AuthorsAge,
+  authors.numberOfAwards AS TotalAwards
+FROM books
+JOIN authors
+ON books.authorId = authors.id;
