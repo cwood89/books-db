@@ -89,5 +89,5 @@ Show off using the following commands by using the File->Save SQL function
 4. Write an ALTER TABLE command to add a new column to your table
 
     ```sql
-
+        ALTER TABLE books ADD COLUMN rating INT;
     ```
